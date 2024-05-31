@@ -1,0 +1,32 @@
+@charset "UTF-8";					
+					
+/* 共通項目 */					
+body {					
+  margin: 30px;					
+  color: #283655;					
+}					
+					
+input {					
+  border: 1px solid;					
+}					
+.hidden {					
+  display: none;					
+}					
+					
+/* ログインフォーム */					
+.login_form {					
+  text-align: center;					
+}					
+/* マスタ一覧 */					
+.master_list  {					
+  text-align: center;					
+}					
+/* マスタ一覧 */					
+.master_list table {					
+  text-align: left;					
+  margin:auto;					
+}					
+/* マスタ入力 */					
+.master_input {					
+  text-align: center;					
+}					

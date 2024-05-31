@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザーマスタ</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/default.css}"/>
+</script>
+</head>
+<body>
+<div class="master_list">
+    <h2>ユーザーマスタ一覧</h2>
+    <form method="post" th:action="@{/userMaster/input}">
+        <input type="submit" value="検索" />
+    </form>
+    <span th:text="${message}"></span>
+    <table border="1" style="border-collapse:collapse;">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th width="50px"></th>
+            <th width="50px"></th>
+            <th width="150px"></th>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td>
+                <form method="post" th:action="@{/userMaster/input}">
+                    <button type="submit" id="update_button">更新</button>
+                    <input type="hidden" name="id" th:value="${user.id}" />
+                </form>
+            </td>
+            <td>
+                <form method="post" th:action="@{/userMaster/delete}">
+                    <button type="submit" id="delete_button">削除</button>
+                    <input type="hidden" name="id" th:value="${user.id}" />
+                </form>
+            </td>
+            <td>
+                <form method="post" th:action="@{/changePassword}">
+                    <button type="submit" id="changePassword_button">パスワード変更</button>
+                    <input type="hidden" name="id" th:value="${user.id}" />
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form method="get" th:action="@{/menu}">
+        <input type="submit" value="戻る" />
+    </form>
+</div>
+</body>
+</html>

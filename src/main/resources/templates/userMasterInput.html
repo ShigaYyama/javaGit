@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザーマスタ</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/default.css}"/>
+</head>
+<body>
+<div class="master_input">
+    <h1>ユーザーマスタ入力</h1>
+    <form method="post" action="/userMaster/submit">
+        <label>ユーザーID</label><br>
+        <input name="id" type="text" th:value="${user.id}" th:disabled="${updateFlag}"/><br>
+        <input th:if="${updateFlag}" name="id" type="hidden" th:value="${user.id}"/>
+
+        <label>ユーザー名</label><br>
+        <input name="name" type="text" th:value="${user.name}"/><br>
+
+        <div th:if="${!updateFlag}">
+            <label>パスワード</label><br>
+            <input name="password" type="password"/><br>
+        </div>
+
+        <input type="submit" name="register" value="登録" />
+        <input type="submit" name="back" value="戻る" />
+
+        <p th:each="message : ${errorMessage}" th:text="${message}"></p>
+
+        <input name="updateFlag" type="hidden" th:value="${updateFlag}"/>
+    </form>
+</div>
+</body>
+</html>
